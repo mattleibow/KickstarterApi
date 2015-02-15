@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickstarterApi", "KickstarterApi\KickstarterApi.csproj", "{A3FD72BA-55AF-47F9-BF96-D019AC18D71F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickstarterApi.Tests", "KickstarterApi.Tests\KickstarterApi.Tests.csproj", "{2B749146-D402-4773-8EFA-52BC837ED4FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A3FD72BA-55AF-47F9-BF96-D019AC18D71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3FD72BA-55AF-47F9-BF96-D019AC18D71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3FD72BA-55AF-47F9-BF96-D019AC18D71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B749146-D402-4773-8EFA-52BC837ED4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B749146-D402-4773-8EFA-52BC837ED4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B749146-D402-4773-8EFA-52BC837ED4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B749146-D402-4773-8EFA-52BC837ED4FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
