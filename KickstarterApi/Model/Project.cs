@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
-namespace Kickstarter.Api.Model
+﻿namespace KickstarterApi.Model
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+
     [DataContract]
     public class Project : HypermediaItem
     {

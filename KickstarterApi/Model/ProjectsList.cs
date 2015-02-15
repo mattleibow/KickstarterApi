@@ -1,7 +1,7 @@
-﻿using System.Runtime.Serialization;
-
-namespace Kickstarter.Api.Model
+﻿namespace KickstarterApi.Model
 {
+    using System.Runtime.Serialization;
+
     [DataContract]
     public class ProjectsList : HypermediaItem
     {

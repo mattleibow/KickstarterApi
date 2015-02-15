@@ -1,11 +1,12 @@
-﻿using System;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Kickstarter.Api.Model;
-
-namespace Kickstarter.Api
+﻿namespace KickstarterApi
 {
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using KickstarterApi.Model;
+
     internal class KickStarterSession : IKickstarterSession
     {
         private const string Root = "https://api.kickstarter.com/";
@@ -15,7 +16,7 @@ namespace Kickstarter.Api
         {
             using (var client = new HttpClient())
             {
-                var result = await client.GetStringAsync(GetUrl(path));
+                var result = await client.GetStringAsync(this.GetUrl(path));
                 return await result.ParsedAsJson<TResult>();
             }
         }
@@ -24,7 +25,7 @@ namespace Kickstarter.Api
         {
             using (var client = new HttpClient())
             {
-                var result = await client.PostAsync(GetUrl(path), new StringContent(parameters.ToJson()));
+                var result = await client.PostAsync(this.GetUrl(path), new StringContent(parameters.ToJson()));
                 var resultText = await result.Content.ReadAsStringAsync();
                 return await resultText.ParsedAsJson<TResult>();
             }
@@ -36,10 +37,10 @@ namespace Kickstarter.Api
             if (!path.StartsWith("http"))
                 builder.Append(Root);
             builder.Append(path);
-            if (!String.IsNullOrWhiteSpace(_accessToken))
+            if (!String.IsNullOrWhiteSpace(this._accessToken))
             {
                 builder.Append(path.Contains("?") ? "&" : "?");
-                builder.AppendFormat("oauth_token={0}", _accessToken);
+                builder.AppendFormat("oauth_token={0}", this._accessToken);
             }
 
             return builder.ToString();
@@ -49,12 +50,12 @@ namespace Kickstarter.Api
 
         internal async Task<bool> Logon(string email, string password, string clientId)
         {
-            var logonResult = await Post<LogonResult>(
+            var logonResult = await this.Post<LogonResult>(
                 String.Format("xauth/access_token?client_id={0}", clientId),
                 new {email, password});
 
-            _accessToken = logonResult.AccessToken;
-            User = logonResult.User;
+            this._accessToken = logonResult.AccessToken;
+            this.User = logonResult.User;
 
             //// TODO: return false for invalid logons
 

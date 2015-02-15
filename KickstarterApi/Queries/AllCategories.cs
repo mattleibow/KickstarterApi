@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using Kickstarter.Api.Model;
-
-namespace Kickstarter.Api.Queries
+﻿namespace KickstarterApi.Queries
 {
+    using System.Threading.Tasks;
+
+    using KickstarterApi.Model;
+
     public class AllCategories : IQuery<CategoryList>
     {
         public Task<CategoryList> ApplyTo(IKickstarterSession session)

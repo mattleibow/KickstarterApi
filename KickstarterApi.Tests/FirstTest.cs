@@ -1,13 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Kickstarter.Api;
-using Kickstarter.Api.Queries;
-
-namespace Kickstarter.KickstarterApi.Tests
+﻿namespace KickstarterApi.Tests
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using KickstarterApi.Queries;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class FirstTest
     {

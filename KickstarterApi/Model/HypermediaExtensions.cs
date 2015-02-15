@@ -1,4 +1,4 @@
-﻿namespace Kickstarter.Api.Model
+﻿namespace KickstarterApi.Model
 {
     public static class HypermediaExtensions
     {

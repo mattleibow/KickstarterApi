@@ -1,23 +1,24 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Kickstarter.Api.Model;
-
-namespace Kickstarter.Api.Queries
+namespace KickstarterApi.Queries
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using KickstarterApi.Model;
+
     public class FindCategory : IQuery<Category>
     {
         private readonly string _name;
 
         public FindCategory(string name)
         {
-            _name = name;
+            this._name = name;
         }
 
         public async Task<Category> ApplyTo(IKickstarterSession session)
         {
             var categoryList = await session.Query(new AllCategories());
-            return categoryList.Categories.FirstOrDefault(c => String.Equals(c.Name, _name, StringComparison.CurrentCultureIgnoreCase));
+            return categoryList.Categories.FirstOrDefault(c => String.Equals(c.Name, this._name, StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

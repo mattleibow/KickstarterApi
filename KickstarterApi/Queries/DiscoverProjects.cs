@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kickstarter.Api.Model;
-
-namespace Kickstarter.Api.Queries
+﻿namespace KickstarterApi.Queries
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using KickstarterApi.Model;
+
     public class DiscoverProjects : IQuery<IEnumerable<Project>>
     {
         private readonly IDictionary<string, string> _parameters = new Dictionary<string, string>();
@@ -14,25 +15,25 @@ namespace Kickstarter.Api.Queries
 
         public DiscoverProjects InCategory(Category category)
         {
-            _parameters["category_id"] = category.Id;
+            this._parameters["category_id"] = category.Id;
             return this;
         }
 
         public DiscoverProjects InStatus(string status)
         {
-            _parameters["state"] = status;
+            this._parameters["state"] = status;
             return this;
         }
 
         public DiscoverProjects SortedBy(string sort)
         {
-            _parameters["sort"] = sort;
+            this._parameters["sort"] = sort;
             return this;
         }
 
         public DiscoverProjects Take(int numberOfProjects)
         {
-            _projectCap = numberOfProjects;
+            this._projectCap = numberOfProjects;
             return this;
         }
 
@@ -40,7 +41,7 @@ namespace Kickstarter.Api.Queries
         {
             var results = new List<Project>();
 
-            var currentUrl = MakeUrl();
+            var currentUrl = this.MakeUrl();
             var numberOfProjects = 0;
 
             while(true)
@@ -48,7 +49,7 @@ namespace Kickstarter.Api.Queries
                 var page = await session.Get<ProjectsList>(currentUrl);
                 results.AddRange(page.Projects);
                 numberOfProjects += page.Projects.Count();
-                if (!page.Projects.Any() || numberOfProjects >= _projectCap)
+                if (!page.Projects.Any() || numberOfProjects >= this._projectCap)
                     break;
                 currentUrl = page.ApiLink("more_projects");
             }
@@ -59,9 +60,9 @@ namespace Kickstarter.Api.Queries
         private string MakeUrl()
         {
             var builder = new StringBuilder("v1/discover");
-            if (_parameters.Any())
+            if (this._parameters.Any())
                 builder.Append("?");
-            builder.Append(String.Join("&", from p in _parameters select String.Format("{0}={1}", p.Key, p.Value)));
+            builder.Append(String.Join("&", from p in this._parameters select String.Format("{0}={1}", p.Key, p.Value)));
             return builder.ToString();
         }
     }

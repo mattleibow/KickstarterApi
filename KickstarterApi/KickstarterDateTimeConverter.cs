@@ -1,9 +1,10 @@
-﻿using System;
-using System.Reflection;
-using Newtonsoft.Json;
-
-namespace Kickstarter.Api
+﻿namespace KickstarterApi
 {
+    using System;
+    using System.Reflection;
+
+    using Newtonsoft.Json;
+
     internal class KickstarterDateTimeConverter : JsonConverter
     {
         private static DateTime _epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

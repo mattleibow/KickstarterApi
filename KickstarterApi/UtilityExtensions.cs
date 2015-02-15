@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace Kickstarter.Api
+﻿namespace KickstarterApi
 {
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
     internal static class UtilityExtensions
     {
         public static string ToJson(this object obj)

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Kickstarter.Api
+﻿namespace KickstarterApi
 {
+    using System.Threading.Tasks;
+
     public class KickstarterClient
     {
         private const string DEFAULT_CLIENT_ID = "2II5GGBZLOOZAA5XBU1U0Y44BU57Q58L8KOGM7H0E0YFHP3KTG";
@@ -10,14 +9,14 @@ namespace Kickstarter.Api
 
         public KickstarterClient(string clientId = null)
         {
-            _clientId = clientId ?? DEFAULT_CLIENT_ID;
+            this._clientId = clientId ?? DEFAULT_CLIENT_ID;
         }
 
         public async Task<IKickstarterSession> StartSession(string email, string password)
         {
             var session = new KickStarterSession();
 
-            var loggedOn = await session.Logon(email, password, _clientId);
+            var loggedOn = await session.Logon(email, password, this._clientId);
 
             //// TODO: throw for failed logons
 

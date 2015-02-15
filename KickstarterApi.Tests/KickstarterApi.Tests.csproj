@@ -6,8 +6,8 @@
     <ProjectGuid>{2B749146-D402-4773-8EFA-52BC837ED4FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kickstarter.KickstarterApi.Tests</RootNamespace>
-    <AssemblyName>Kickstarter.KickstarterApi.Tests</AssemblyName>
+    <RootNamespace>KickstarterApi.Tests</RootNamespace>
+    <AssemblyName>KickstarterApi.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -78,7 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
