@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Kickstarter.Api.Model;
@@ -13,20 +13,20 @@ namespace Kickstarter.Api
 
         public async Task<TResult> Get<TResult>(string path)
         {
-            using (var client = new WebClient())
+            using (var client = new HttpClient())
             {
-                client.Encoding = Encoding.UTF8;
-                var result = await client.DownloadStringTaskAsync(GetUrl(path));
+                var result = await client.GetStringAsync(GetUrl(path));
                 return await result.ParsedAsJson<TResult>();
             }
         }
 
         public async Task<TResult> Post<TResult>(string path, object parameters)
         {
-            using (var client = new WebClient())
+            using (var client = new HttpClient())
             {
-                var result = await client.UploadStringTaskAsync(GetUrl(path), "POST", parameters.ToJson());
-                return await result.ParsedAsJson<TResult>();
+                var result = await client.PostAsync(GetUrl(path), new StringContent(parameters.ToJson()));
+                var resultText = await result.Content.ReadAsStringAsync();
+                return await resultText.ParsedAsJson<TResult>();
             }
         }
 
@@ -55,6 +55,8 @@ namespace Kickstarter.Api
 
             _accessToken = logonResult.AccessToken;
             User = logonResult.User;
+
+            //// TODO: return false for invalid logons
 
             return true;
         }

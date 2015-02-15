@@ -14,10 +14,10 @@ namespace Kickstarter.Api
         {
             var settings = new JsonSerializerSettings
             {
-                Converters = new JsonConverter[] {  new KickstarterDateTimeConverter() }
+                Converters = new JsonConverter[] { new KickstarterDateTimeConverter() }
             };
 
-            return JsonConvert.DeserializeObjectAsync<T>(json, settings);
+            return Task.Run(() => JsonConvert.DeserializeObject<T>(json, settings));
         }
     }
 }

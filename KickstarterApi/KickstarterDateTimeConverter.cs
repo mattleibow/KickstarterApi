@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Newtonsoft.Json;
 
 namespace Kickstarter.Api
@@ -25,8 +26,8 @@ namespace Kickstarter.Api
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof (DateTime).IsAssignableFrom(objectType)
-                   || typeof (DateTime?).IsAssignableFrom(objectType);
+            return typeof(DateTime).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo()) ||
+                   typeof(DateTime?).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
         }
     }
 }

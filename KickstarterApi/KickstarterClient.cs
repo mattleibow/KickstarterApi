@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Kickstarter.Api
 {
@@ -18,7 +19,7 @@ namespace Kickstarter.Api
 
             var loggedOn = await session.Logon(email, password, _clientId);
 
-            // TODO: Report successful logon
+            //// TODO: throw for failed logons
 
             return session;
         }
