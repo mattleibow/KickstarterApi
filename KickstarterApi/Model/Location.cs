@@ -6,7 +6,7 @@
     public class Location
     {
         [DataMember(Name = "id")]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [DataMember(Name = "name")]
         public string Name { get; set; }

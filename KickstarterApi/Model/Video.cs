@@ -6,7 +6,7 @@
     public class Video
     {
         [DataMember(Name = "id")]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [DataMember(Name = "status")]
         public string Status { get; set; }

@@ -42,6 +42,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -67,8 +68,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FirstTest.cs" />
+    <Compile Include="KickstarterCategoryQueryTest.cs" />
+    <Compile Include="KickstarterClientTest.cs" />
+    <Compile Include="KickstarterProjectQueryTest.cs" />
+    <Compile Include="KickstarterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KickstarterApi\KickstarterApi.csproj">
